@@ -48,7 +48,7 @@ public class BaseTestCase extends BaseDriver {
         ssn.sendKeys("123456789");
 
         WebElement username = driver.findElement(By.id("customer.username"));
-        username.sendKeys("technostudy19999");
+        username.sendKeys("techngossttudy19999");
 
         WebElement password = driver.findElement(By.id("customer.password"));
         password.sendKeys("technostudy321");
