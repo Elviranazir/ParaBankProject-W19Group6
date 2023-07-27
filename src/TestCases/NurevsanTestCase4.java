@@ -18,41 +18,53 @@ public class NurevsanTestCase4 extends BaseDriver {
 
     driver.get("https://parabank.parasoft.com/parabank/index.htm");
 
-    WebElement username = driver.findElement(By.xpath("//*[@id=\"loginPanel\"]/form/div[1]/input"));
-    username.sendKeys("technostudy19999");
+    WebElement username = driver.findElement(By.xpath("//input[@name='username']"));
+    username.sendKeys("nurevsan");
 
-    WebElement password= driver.findElement(By.xpath("//*[@id=\"loginPanel\"]/form/div[2]/input"));
-    password.sendKeys("technostudy321");
+    WebElement password= driver.findElement(By.xpath("//input[@name='password']"));
+    password.sendKeys("Abc123");
 
-    WebElement login = driver.findElement(By.xpath("//*[@id=\"loginPanel\"]/form/div[3]/input"));
+    WebElement login = driver.findElement(By.xpath("//input[@value='Log In']"));
     login.click();
 
     WebElement updateContactInfoLink = driver.findElement(By.xpath("//a[contains(text(),'Update Contact Info')]"));
     updateContactInfoLink.click();
 
-    WebElement addressField = driver.findElement(By.id("address"));
-    addressField.clear();
-    addressField.sendKeys("New Address");
+    WebElement firstName = driver.findElement(By.id("customer.firstName"));
+    firstName.clear();
+    firstName.sendKeys("Harry");
 
-    WebElement cityField = driver.findElement(By.id("city"));
-    cityField.clear();
-    cityField.sendKeys("Atlanta");
+    WebElement lastName = driver.findElement(By.id("customer.lastName"));
+    lastName.clear();
+    lastName.sendKeys("Potter");
 
-    WebElement stateField = driver.findElement(By.id("state"));
-    stateField.clear();
-    stateField.sendKeys("Georgia");
+    WebElement address = driver.findElement(By.id("customer.address.street"));
+    address.clear();
+    address.sendKeys("New Address");
 
-    WebElement zipCodeField = driver.findElement(By.id("zipCode"));
-    zipCodeField.clear();
-    zipCodeField.sendKeys("44044");
+    WebElement city = driver.findElement(By.id("customer.address.city"));
+    city.clear();
+    city.sendKeys("Atlanta");
 
-    WebElement updateProfileButton = driver.findElement(By.xpath("//input[@value='Update Profile']"));
+    WebElement state = driver.findElement(By.id("customer.address.state"));
+    state.clear();
+    state.sendKeys("Georgia");
+
+    WebElement zipCode = driver.findElement(By.id("customer.address.zipCode"));
+    zipCode.clear();
+    zipCode.sendKeys("44044");
+
+    WebElement phone = driver.findElement(By.id("customer.phoneNumber"));
+    phone.clear();
+    phone.sendKeys("444000444");
+
+    WebElement updateProfileButton = driver.findElement(By.xpath("//input[@type='submit' and @value='Update Profile']"));
     updateProfileButton.click();
 
     MyMethods.myWait(1);
 
 
-    WebElement successMessage = driver.findElement(By.xpath("//h1[contains(text(),'Profile Updated')]"));
+    WebElement successMessage = driver.findElement(By.xpath("//p[text()='Your updated address and phone number have been added to the system.']"));
     Assert.assertTrue("Updating Contact Information Failed", successMessage.isDisplayed());
 
     MyMethods.myWait(1);
